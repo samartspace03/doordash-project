@@ -3,7 +3,9 @@ import pandas as pd
 import boto3
 import io
 import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # Initialize boto3 clients outside handler for efficiency
 s3 = boto3.client('s3')
 sns = boto3.client('sns')
@@ -63,3 +65,4 @@ def lambda_handler(event, context):
             "statusCode": 500,
             "body": json.dumps(f"Error processing S3 file: {str(e)}")
         }
+
